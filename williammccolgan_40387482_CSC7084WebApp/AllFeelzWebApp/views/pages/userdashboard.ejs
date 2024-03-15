@@ -1,0 +1,108 @@
+<!-- Include head and header partial ejs templates-->
+
+<%- include('../partials/head'); %>
+
+            <!-- Page container - include forms, components etc within container-->
+            <div class="container">
+
+                <h1 class='title' class="pt-5">Hello, welcome to your Dashboard</h1>
+
+                <a href="/addreading" class="btn btn-warning btn-lg px-4 gap-3"role="button">Add New reading</a>
+
+                <div class="row">
+                    <% if (!dashboardData){ %>
+                        <h5>You do not currently have any readings</h5>
+
+                    <% } else { %> 
+
+                    <div class="col-md-12">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Enjoyment</th>
+                                    <th scope="col">Sadness</th>
+                                    <th scope="col">Anger</th>
+                                    <th scope="col">Contempt</th>
+                                    <th scope="col">Disgust</th>
+                                    <th scope="col">Fear</th>
+                                    <th scope="col">Surprise</th>
+                                    <th scope="col">Emotional Trigger</th>
+                                    <th scope="col">Actions</th>
+                                    <th scope="col"></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% dashboardData.forEach((row)=> { %>
+                                    <tr>
+                                        <th scope="row">
+                                            <%= row.timestamp.substring(0,10); %>
+                                            
+                                        </th>
+                                        <td>
+                                            <%= row.enjoyment %>
+                                        </td>
+                                        <td>
+                                            <%= row.sadness %>
+                                        </td>
+                                        <td>
+                                            <%= row.anger %>
+                                        </td>
+                                        <td>
+                                            <%= row.contempt %>
+                                        </td>
+                                        <td>
+                                            <%= row.disgust %>
+                                        </td>
+                                        <td>
+                                            <%= row.fear %>
+                                        </td>
+                                        <td>
+                                            <%= row.surprise %>
+                                        </td>
+                                        <td>
+                                            <%= row.contextlabel %>
+                                        </td>
+                                        <td>
+                                            <a href="/viewreading/<%= row.ReadingID %>" class="btn btn-warning" role="button">View</a>
+                                            <a href="/editreading/<%= row.ReadingID %>" class="btn btn-warning" role="button">Edit</a>                                               
+                                            
+
+                                        </td>
+                                        <td>
+                                            <form action="/deletereading/<%= row.ReadingID %>" method="post" >
+                                                <button type="submit" class="btn btn-danger" action="submit">Delete</button>
+                                            </form>
+                                        </td>    
+
+
+                                            
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+
+                        <% } %>
+
+
+
+
+
+
+
+                    </div><!-- End col-sm-6-->
+
+                    
+                </div><!-- /row-->
+
+            </div><!-- /.container -->
+
+            
+
+    </div><!-- /.container -->
+
+    <!-- Include footer partial ejs templates-->
+
+    <%- include('../partials/footer'); %>

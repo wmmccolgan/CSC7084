@@ -1,0 +1,112 @@
+<!-- Include head and header partial ejs templates-->
+
+<%- include('../partials/head'); %>
+
+<!-- Page container - include forms, components etc within container-->
+  <div class="container">
+
+    
+    
+    
+
+
+    <div class="phppot-container">
+      <h1><%= firstname %> These Are Your reading Trends</h1>
+      <div>
+          <canvas id="line-chart"></canvas>
+      </div>
+  </div>
+  
+  <script>
+
+    const dates = `<%- JSON.stringify(dates) %>`;
+    const datelabels = JSON.parse(dates);
+
+    const enjoyment = `<%- JSON.stringify(enjoyment) %>`;
+    const enjoymentVals = JSON.parse(enjoyment);
+
+    const sadness = `<%- JSON.stringify(sadness) %>`;
+    const sadnessVals = JSON.parse(sadness);
+
+    const anger = `<%- JSON.stringify(anger) %>`;
+    const angerVals = JSON.parse(anger);
+
+    const contempt = `<%- JSON.stringify(contempt) %>`;
+    const contemptVals = JSON.parse(contempt);
+
+    const disgust = `<%- JSON.stringify(disgust) %>`;
+    const disgustVals = JSON.parse(disgust);
+
+    const fear = `<%- JSON.stringify(fear) %>`;
+    const fearVals = JSON.parse(fear);
+
+    const surprise = `<%- JSON.stringify(surprise) %>`;
+    const surpriseVals = JSON.parse(surprise);
+
+  new Chart(document.getElementById("line-chart"), {
+    type : 'line',
+    data : {
+      labels : datelabels,
+      datasets : [
+          {
+            data : enjoymentVals,
+            label : "Enjoyment",
+            borderColor : "#eaaf24",
+            fill : false
+          },
+          {
+            data : sadnessVals,
+            label : "Sadness",
+            borderColor : "#406aad",
+            fill : false
+          },
+          {
+            data : angerVals,
+            label : "Anger",
+            borderColor : "#a03d3e",
+            fill : false
+          },
+          {
+            data : contemptVals,
+            label : "Contempt",
+            borderColor : "#b76c51",
+            fill : false
+          },
+          {
+            data : disgustVals,
+            label : "Disgust",
+            borderColor : "#649941",
+            fill : false
+          },
+          {
+            data : fearVals,
+            label : "Fear",
+            borderColor : "#5b3988",
+            fill : false
+          },
+          {
+            data : surpriseVals,
+            label : "Surprise",
+            borderColor : "#3cafaf",
+            fill : false
+          }   
+        
+        ]
+    },
+    options : {
+      title : {
+        display : true,
+        text : 'Your Recent reading Trends'
+      }
+    }
+  });
+</script>
+
+
+  </div><!-- /.container -->
+
+
+  <!-- Include footer partial ejs templates-->
+
+  <%- include('../partials/footer'); %>
+

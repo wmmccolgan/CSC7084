@@ -1,0 +1,39 @@
+<header class="feelz-header">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <div class="logo">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="/img/AllTheFeelz.png" />
+                </a>
+            </div>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <% if (loggedin) { %>
+                <li><a href="/userdashboard" class="nav-link px-2 text-white">All Readings</a></li>
+              
+                <li><a href="/userreport" class="nav-link px-2 text-white">Report</a></li>
+                <% } %>
+            </ul>
+
+
+            <div class="text-end">
+
+                <% if (!loggedin) { %>                               
+                <a href="/userlogin" class="btn btn-outline-light me-2" role="button">Login</a>
+                <a href="/userregistration" class="btn btn-warning" role="button">Register</a>
+                <% } else { %>
+                    <div class="user">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"></path>
+          </svg>
+         
+                      </div>
+                    <!-- <i class="bi bi-person">Hi, <%= firstname %></i> -->
+                    <a href="/logout" class="btn btn-warning" role="button">Logout</a>
+                <% } %>
+             
+            </div>
+        </div>
+    </div>
+</header>

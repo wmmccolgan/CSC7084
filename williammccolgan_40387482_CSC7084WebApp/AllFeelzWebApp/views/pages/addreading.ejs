@@ -1,0 +1,96 @@
+<!-- Include head and header partial ejs templates-->
+
+<%- include('../partials/head'); %>
+
+  <!-- Page container - include forms, components etc within container-->
+  <div class="container">
+
+    <h1 class='title' class="pt-5">Add New Emotion reading</h1>
+    <form action="/addreading" method="post" >
+
+      <div class="row">
+
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="enjoyment" class="form-label col-md-10">Enjoyment Level:</label><output class="output-result">1</output>
+          <input type="range" class="form-range" min="1" max="10" id="enjoyment" name="enjoyment" value="1" oninput="this.previousElementSibling.value = this.value">
+          
+        </div>
+  
+        <div class="mb-3">
+          <label for="sadness" class="form-label col-md-10">Sadness Level:</label><output class="output-result">1</output>
+          <input type="range" class="form-range" min="1" max="10" id="sadness" name="sadness" value="1" oninput="this.previousElementSibling.value = this.value">
+          
+        </div>
+  
+        <div class="mb-3">
+          <label for="anger" class="form-label col-md-10">Anger Level:</label><output class="output-result">1</output>
+          <input type="range" class="form-range" min="1" max="10" id="anger" name="anger" value="1" oninput="this.previousElementSibling.value = this.value">
+          
+        </div>
+  
+        <div class="mb-3">
+          <label for="contempt" class="form-label col-md-10">Contempt Level:</label><output class="output-result">1</output>
+          <input type="range" class="form-range" min="1" max="10" id="contempt" name="contempt" value="1" oninput="this.previousElementSibling.value = this.value">
+          
+        </div>
+  
+        <div class="mb-3">
+          <label for="disgust" class="form-label col-md-10">Disgust Level:</label><output class="output-result">1</output>
+          <input type="range" class="form-range" min="1" max="10" id="disgust" name="disgust" value="1" oninput="this.previousElementSibling.value = this.value">
+          
+        </div>
+  
+        <div class="mb-3">
+          <label for="fear" class="form-label col-md-10">Fear Level:</label><output class="output-result">1</output>
+          <input type="range" class="form-range" min="1" max="10" id="fear" name="fear" value="1" oninput="this.previousElementSibling.value = this.value">
+          
+        </div>
+  
+        <div class="mb-3">
+          <label for="surprise" class="form-label col-md-10">Surprise Level:</label><output class="output-result">1</output>
+          <input type="range" class="form-range" min="1" max="10" id="surprise" name="surprise" value="1"  oninput="this.previousElementSibling.value = this.value">
+          
+        </div>
+
+
+      </div><!-- End col-sm-6-->
+
+      <div class="col-md-6">
+        <div class="">
+          <label for="contextID" class="form-label">What Triggered These Emotions?</label>
+          <select class="form-select" id="contextID" name="contextID" required>          
+            <option selected disabled value="">Please Choose...</option>
+            
+            <% triggerList.forEach((row) => { %>
+            <option value="<%= row.contextID %>"><%= row.contextlabel %></option>
+            <% }); %>
+          </select>
+          <div class="invalid-feedback">
+            Please select contextual trigger
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="UserComment" class="form-label">Add a Journal Entry:</label>
+          <textarea class="form-control" id="UserComment" name="UserComment" rows="10"></textarea>
+        </div>
+  
+        <div class="mb-3">
+          <button class="btn btn-warning" type="submit">Save reading</button>
+        </div>
+      
+
+      </div> <!-- End col-sm-6-->
+    </div><!-- /row-->
+
+    </form>
+      
+
+      
+
+  </div><!-- /.container -->
+
+  <!-- Include footer partial ejs templates-->
+
+  <%- include('../partials/footer'); %>
